@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Manrope", sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+.bg-aurora {
+  background:
+    radial-gradient(circle at 10% 20%, rgba(17, 94, 89, 0.18) 0%, transparent 45%),
+    radial-gradient(circle at 80% 15%, rgba(180, 83, 9, 0.18) 0%, transparent 40%),
+    linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+.input {
+  border: 1px solid rgb(148 163 184);
+  border-radius: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  background: white;
+}
+
+.input:focus {
+  outline: 2px solid rgb(15 118 110);
+  outline-offset: 1px;
+}
+
+.skip-link {
+  position: absolute;
+  top: -200px;
+  left: 1rem;
+  z-index: 50;
+  padding: 0.65rem 0.9rem;
+  border-radius: 0.7rem;
+  background: rgb(15 23 42);
+  color: white;
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+a:focus-visible {
+  outline: 3px solid rgb(13 148 136);
+  outline-offset: 2px;
+}
+
+.button-primary {
+  border: 1px solid rgb(15 118 110);
+  border-radius: 0.75rem;
+  padding: 0.65rem 0.9rem;
+  background: rgb(13 148 136);
+  color: white;
+  font-weight: 700;
+}
+
+.button-primary:hover {
+  background: rgb(15 118 110);
+}
+
+.button-secondary {
+  border: 1px solid rgb(51 65 85);
+  border-radius: 0.75rem;
+  padding: 0.5rem 0.8rem;
+  background: white;
+  color: rgb(30 41 59);
+  font-weight: 600;
+}

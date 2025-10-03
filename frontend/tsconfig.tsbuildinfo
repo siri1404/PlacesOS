@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/api.ts","./src/config.ts","./src/main.tsx","./src/types.ts","./src/vite-env.d.ts","./src/components/admindashboard.tsx","./src/components/availabilitygrid.tsx","./src/components/bookingcalendar.tsx"],"version":"5.9.3"}
