@@ -152,18 +152,15 @@ function App() {
             <Navigation />
 
             <motion.div
-              className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
-              initial={{ opacity: 1 }}
+              className="absolute bottom-1/4 left-0 right-0 z-10 text-center"
+              initial={{ opacity: 0 }}
               animate={{
-                opacity: 1,
-                scale: 1.4,
-                x: -300,
-                y: 300
+                opacity: 1
               }}
               transition={{
                 duration: 1.2,
                 ease: "easeOut",
-                delay: 0.3
+                delay: 0.8
               }}
             >
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-bricolage font-normal text-black mb-6">
@@ -172,8 +169,8 @@ function App() {
             </motion.div>
           </div>
 
-          <div style={{ height: '200vh' }}>
-            <div className="h-screen"></div>
+          <div style={{ height: '250vh' }}>
+            <div style={{ height: '150vh' }}></div>
             <div className="min-h-screen bg-white flex items-center justify-center">
               <div className="text-center px-4">
                 <h2 className="text-4xl font-bricolage font-bold text-black mb-4">
