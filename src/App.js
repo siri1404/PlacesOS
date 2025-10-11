@@ -59,8 +59,8 @@ function App() {
 
       {!isLoading && (
         <>
-          <div className="fixed top-0 left-0 w-full h-screen">
-            <div className="absolute top-0 left-0 w-full h-3/5 flex">
+          <div className="fixed top-0 left-0 w-full h-screen bg-white">
+            <div className="absolute top-0 left-0 w-full h-full flex">
               <motion.div
                 className="w-1/3 h-full"
                 initial={{ opacity: 0 }}
@@ -120,7 +120,7 @@ function App() {
               </motion.div>
             </div>
 
-            <div className="absolute top-0 left-0 w-full h-3/5 flex pointer-events-none">
+            <div className="absolute top-0 left-0 w-full h-full flex pointer-events-none">
               <div
                 ref={el => imageColumnsRef.current[0] = el}
                 className="w-1/3 h-full overflow-hidden"
@@ -156,24 +156,27 @@ function App() {
               </div>
             </div>
 
-            {/* Name stays in final position */}
-            <div className="absolute z-20" style={{
-              left: "calc(50% - 700px)",
-              top: "calc(50% + 200px)",
-              transform: "translate(-50%, -50%)"
-            }}>
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bricolage font-normal text-black mb-6 whitespace-nowrap" style={{
-                fontSize: "104px",
-                transform: "scale(1.3)"
-              }}>
+            <motion.div
+              className="absolute top-1/2 left-0 right-0 z-10 text-center transform -translate-y-1/2"
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: 1
+              }}
+              transition={{
+                duration: 1.2,
+                ease: "easeOut",
+                delay: 0.8
+              }}
+            >
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bricolage font-normal text-white mb-6">
                 Pooja Kanala
               </h1>
-            </div>
+            </motion.div>
 
           </div>
 
           <div style={{ height: '250vh' }}>
-            <div style={{ height: '150vh' }}></div>
+            <div style={{ height: '200vh' }}></div>
             <div className="min-h-screen bg-white flex items-center justify-center">
               <div className="text-center px-4">
                 <h2 className="text-4xl font-bricolage font-bold text-black mb-4">
