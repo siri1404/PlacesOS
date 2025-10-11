@@ -3,7 +3,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Preloader from './components/Preloader';
-import Navigation from './components/Navigation';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,7 +23,6 @@ function App() {
         const scrollThreshold1 = windowHeight * 0.3;
         const scrollThreshold2 = windowHeight * 0.6;
         const scrollThreshold3 = windowHeight * 0.9;
-        const completeThreshold = windowHeight * 1.2;
 
         if (imageColumnsRef.current[0]) {
           const progress1 = Math.min(Math.max((scrollTop / scrollThreshold1), 0), 1);
@@ -66,11 +64,14 @@ function App() {
               <motion.div
                 className="w-1/3 h-full"
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+                animate={{ 
+                  opacity: 1,
+                  scale: 1
+                }}
                 transition={{
                   duration: 1.2,
                   ease: "easeOut",
-                  delay: 0.3
+                  delay: 1.0
                 }}
               >
                 <img
@@ -82,11 +83,14 @@ function App() {
               <motion.div
                 className="w-1/3 h-full"
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+                animate={{ 
+                  opacity: 1,
+                  scale: 1
+                }}
                 transition={{
                   duration: 1.2,
                   ease: "easeOut",
-                  delay: 0.4
+                  delay: 1.1
                 }}
               >
                 <img
@@ -98,11 +102,14 @@ function App() {
               <motion.div
                 className="w-1/3 h-full"
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+                animate={{ 
+                  opacity: 1,
+                  scale: 1
+                }}
                 transition={{
                   duration: 1.2,
                   ease: "easeOut",
-                  delay: 0.5
+                  delay: 1.2
                 }}
               >
                 <img
@@ -149,24 +156,20 @@ function App() {
               </div>
             </div>
 
-            <Navigation />
-
-            <motion.div
-              className="absolute bottom-1/4 left-0 right-0 z-10 text-center"
-              initial={{ opacity: 0 }}
-              animate={{
-                opacity: 1
-              }}
-              transition={{
-                duration: 1.2,
-                ease: "easeOut",
-                delay: 0.8
-              }}
-            >
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bricolage font-normal text-black mb-6">
+            {/* Name stays in final position */}
+            <div className="absolute z-20" style={{
+              left: "calc(50% - 700px)",
+              top: "calc(50% + 200px)",
+              transform: "translate(-50%, -50%)"
+            }}>
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bricolage font-normal text-black mb-6 whitespace-nowrap" style={{
+                fontSize: "104px",
+                transform: "scale(1.3)"
+              }}>
                 Pooja Kanala
               </h1>
-            </motion.div>
+            </div>
+
           </div>
 
           <div style={{ height: '250vh' }}>
