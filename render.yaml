@@ -1,0 +1,35 @@
+databases:
+  - name: placesos-db
+    databaseName: placesos
+    user: placesos
+    plan: free
+
+services:
+  - type: web
+    name: placesos-api
+    env: docker
+    dockerContext: ./backend
+    dockerfilePath: ./backend/Dockerfile
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: API_PORT
+        value: 4000
+      - key: CORS_ORIGIN
+        sync: false
+      - key: DATABASE_URL
+        fromDatabase:
+          name: placesos-db
+          property: connectionString
+
+  - type: web
+    name: placesos-frontend
+    env: docker
+    dockerContext: ./frontend
+    dockerfilePath: ./frontend/Dockerfile
+    plan: free
+    envVars:
+      - key: VITE_API_BASE_URL
+        sync: false

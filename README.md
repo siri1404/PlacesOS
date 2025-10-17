@@ -1,91 +1,59 @@
-# Portfolio v1 - Pooja Kanala
+# PlacesOS - Workplace Resource Platform
 
-A modern, responsive portfolio website built with React, Tailwind CSS, and smooth animations.
+PlacesOS is a full-stack workplace resource platform built with TypeScript React frontend, TypeScript Node.js Express API backend, and PostgreSQL.
 
-## Features
+## Architecture
 
-- ✨ Modern, clean design with smooth animations
-- 🎨 Custom preloader with Bricolage Grotesque font
-- 📱 Fully responsive design
-- 🚀 Smooth scrolling and transitions
-- 🎭 Framer Motion animations
-- 🎯 AOS (Animate On Scroll) effects
-- 💫 Glass morphism effects
-- 🎨 Gradient backgrounds and modern UI elements
+- `frontend/`: React + Vite + Tailwind UI for booking calendar, availability grid, and admin operations.
+- `backend/`: Express REST API with strict runtime config validation, PostgreSQL persistence, and audit logging.
+- `.github/workflows/ci.yml`: lint, test, build pipeline.
 
-## Tech Stack
+## REST API Coverage
 
-- **React 18** - Modern React with hooks
-- **Tailwind CSS** - Utility-first CSS framework
-- **Framer Motion** - Production-ready motion library
-- **AOS** - Animate On Scroll library
-- **React Intersection Observer** - For scroll-triggered animations
-- **GSAP** - Professional-grade animation library
-- **React Spring** - Spring-physics based animations
+The backend includes 20+ endpoints across:
 
-## Installation
+- `users`
+- `resource-types`
+- `resources`
+- `bookings`
+- `recurring-rules`
+- `availability`
+- `audit-log`
 
-1. Install dependencies:
-```bash
-npm install
-```
+## Database Schema
 
-2. Start the development server:
-```bash
-npm start
-```
+Migration file: `backend/src/db/migrations/001_init.sql`
 
-3. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Normalized tables:
 
-## Project Structure
+- `users`
+- `resource_types`
+- `resources`
+- `bookings`
+- `recurring_rules`
+- `audit_log`
 
-```
-src/
-├── components/
-│   ├── Preloader.js      # Custom preloader with name animation
-│   ├── Navigation.js     # Responsive navigation with smooth scroll
-│   ├── Hero.js          # Hero section with parallax effects
-│   ├── About.js         # About section with skill bars
-│   ├── Projects.js      # Featured projects showcase
-│   └── Contact.js       # Contact form and social links
-├── App.js               # Main app component
-├── index.js            # React entry point
-└── index.css           # Global styles and Tailwind imports
-```
+## Local Setup
 
-## Customization
+1. Install dependencies from repo root:
+   - `npm install`
+2. Copy env templates and set real values:
+   - `backend/.env.example` -> `backend/.env`
+   - `frontend/.env.example` -> `frontend/.env`
+3. Run migration:
+   - `npm run migrate -w backend`
+4. Start backend:
+   - `npm run dev -w backend`
+5. Start frontend (separate terminal):
+   - `npm run dev -w frontend`
 
-### Fonts
-The project uses Bricolage Grotesque for headings and Inter for body text. Fonts are loaded from Google Fonts in `public/index.html`.
+## Quality Gates
 
-### Colors
-The color scheme can be customized in `tailwind.config.js`. The current palette includes:
-- Primary: Black (#000000)
-- Accent: Blue to Purple gradient
-- Background: White and light gray
+- Lint: `npm run lint`
+- Test: `npm run test`
+- Build: `npm run build`
 
-### Animations
-- Preloader: Fade in with scale and slide up effects
-- Navigation: Smooth scroll with backdrop blur
-- Hero: Parallax background with floating elements
-- Sections: Scroll-triggered animations with AOS
-- Interactive elements: Hover and tap animations with Framer Motion
+## Notes
 
-## Performance Features
-
-- Optimized images and lazy loading
-- Smooth scroll behavior
-- Efficient animation libraries
-- Responsive design for all devices
-- Modern CSS with Tailwind utilities
-
-## Browser Support
-
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
+- Runtime configuration is fail-fast. Missing required env vars will stop startup.
+- API writes generate records in `audit_log`.

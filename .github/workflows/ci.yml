@@ -1,0 +1,48 @@
+name: ci
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ["22.x"]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm run test
+        env:
+          NODE_ENV: test
+          API_PORT: 4010
+          DATABASE_URL: postgresql://test:test@localhost:5432/test
+          CORS_ORIGIN: http://localhost:5173
+          VITE_API_BASE_URL: http://localhost:4000
+
+      - name: Build
+        run: npm run build
+        env:
+          NODE_ENV: production
+          API_PORT: 4000
+          DATABASE_URL: postgresql://placeholder:placeholder@localhost:5432/placeholder
+          CORS_ORIGIN: http://localhost:5173
+          VITE_API_BASE_URL: http://localhost:4000
