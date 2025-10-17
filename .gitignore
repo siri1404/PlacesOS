@@ -10,3 +10,4 @@ backend/.env
 frontend/.env
 *.log
 .DS_Store
+lighthouse.accessibility.json
